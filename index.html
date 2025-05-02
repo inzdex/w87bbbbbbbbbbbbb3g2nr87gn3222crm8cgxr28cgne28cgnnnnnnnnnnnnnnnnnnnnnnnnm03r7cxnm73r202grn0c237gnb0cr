@@ -1,27 +1,133 @@
-<div style="grid-area:gam;box-sizing:border-box;">
-    <div style="height:534px;width: 836px;border-radius:10px;box-shadow:rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 3px 1px -2px, rgba(0, 0, 0, 0.2) 0px 1px 5px 0px;margin: 0px auto;overflow:hidden;position:relative;box-sizing:border-box;">
-        <div style="display: none;height:calc(100% - 64px);position:absolute;width: 100%;-webkit-box-align:center;align-items:center;-webkit-box-pack:center;justify-content:center;z-index:2;box-sizing:border-box;">
-            <div style="height:min-content;transition:scale 0.2s ease 0s;cursor:pointer;position:relative;user-select:none;box-sizing:border-box;">
-                <div style="font-size:28px;height:80px;padding:21px;transition:background-color 0.2s ease 0s;width: 80px;backdrop-filter:blur(3px);background-color:rgba(255, 255, 255, 0.75);border-radius:50%;left:50%;position:absolute;text-align:center;top:50%;transform:none;z-index:1;overflow:visible;box-sizing:border-box;"><i style="line-height:28px;box-sizing:border-box;font-style:normal;font-variant:normal;font-weight:400;text-transform:none;-webkit-font-smoothing:antialiased;font-family:monochrome;"></i></div>
-                <div style="color:rgb(255, 255, 255);font-size:22.5px;font-weight:700;left:50%;margin-top:40px;position:absolute;text-shadow:rgba(0, 0, 0, 0.5) 3px 3px 9px;text-wrap:nowrap;top:50%;transform:none;z-index:1;box-sizing:border-box;">Play now</div>
-                <figure style="height:100%;margin:0px;width: 100%;box-sizing:border-box;"><img src="https://rocketgames.imgix.net/uploads/games/k/krunker-io/krunker-io.jpg?auto=format,compress,enhance&amp;w=204&amp;dpr=1" alt="Krunker.io" srcset="https://rocketgames.imgix.net/uploads/games/k/krunker-io/krunker-io.jpg?auto=format,compress,enhance&amp;w=204&amp;dpr=1 1x, https://rocketgames.imgix.net/uploads/games/k/krunker-io/krunker-io.jpg?auto=format,compress,enhance&amp;w=204&amp;dpr=2 2x" width="204" height="204" fetchpriority="high" loading="eager" style="border-radius:10px;height: auto;transition:box-shadow 0.2s ease 0s, scale 0.2s ease 0s, -webkit-box-shadow 0.2s ease 0s;width: auto;background-color:rgba(0, 0, 0, 0);display:block;font-size:0px;text-indent:-1000px;box-sizing:border-box;" />
-                    <figcaption style="font-size:0px;line-height:0px;opacity:0;text-align:center;box-sizing:border-box;">Krunker.io</figcaption>
-                </figure>
-            </div>
-            <div style="bottom:15px;color:rgba(255, 255, 255, 0.75);position:absolute;z-index:-1;box-sizing:border-box;"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Music</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
+    body { background-color: #121212; color: white; display: flex; flex-direction: column; height: 100vh; }
+    .container { display: flex; flex: 1; }
+    .sidebar {
+      width: 220px;
+      background-color: #000;
+      padding: 20px;
+    }
+    .sidebar h2 { color: #1DB954; margin-bottom: 20px; }
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin: 10px 0;
+      transition: color 0.3s;
+    }
+    .sidebar a:hover { color: #1DB954; }
+    .main-content {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .playlist {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background-color: #181818;
+      padding: 15px;
+      border-radius: 10px;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+    .card:hover { background-color: #282828; }
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .card h4 { margin-top: 10px; }
+    .player {
+      height: 80px;
+      background-color: #282828;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+    .player span {
+      color: white;
+    }
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .controls button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    audio { display: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h2>MyMusic</h2>
+      <a href="#">Home</a>
+      <a href="#">Search</a>
+      <a href="#">Your Library</a>
+      <a href="#">Create Playlist</a>
+      <a href="#">Liked Songs</a>
+    </div>
+    <div class="main-content">
+      <h1>Featured Playlists</h1>
+      <div class="playlist">
+        <div class="card" onclick="playSong('Chill Hits', 'Artist A', 'songs/song1.mp3')">
+          <img src="https://via.placeholder.com/150" alt="Chill Hits">
+          <h4>Chill Hits</h4>
         </div>
-        <div style="background-color:rgba(0, 0, 0, 0.4);height:534px;box-sizing:border-box;"><iframe data-href="" title="Krunker.io" src="https://www.rocketgames.io/gameframe/krunker-io" style="border:0px none rgb(0, 43, 80);display:block;height:470px;user-select:none;width: 100%;box-sizing:border-box;"></iframe>
-            <div style="display:flex;-webkit-box-align:center;align-items:center;-webkit-box-pack:justify;background:rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box;box-shadow:rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 3px 1px -2px, rgba(0, 0, 0, 0.2) 0px 1px 5px 0px;color:rgb(0, 0, 0);gap:15px;height:64px;justify-content:space-between;padding:0px 12px;box-sizing:border-box;">
-                <div style="gap:10px;margin:0px;display:flex;-webkit-box-align:center;align-items:center;box-sizing:border-box;"><img src="https://rocketgames.imgix.net/uploads/games/k/krunker-io/krunker-io.jpg?auto=format,compress,enhance&amp;w=50&amp;dpr=1" srcset="https://rocketgames.imgix.net/uploads/games/k/krunker-io/krunker-io.jpg?auto=format,compress,enhance&amp;w=50&amp;dpr=1 1x, https://rocketgames.imgix.net/uploads/games/k/krunker-io/krunker-io.jpg?auto=format,compress,enhance&amp;w=50&amp;dpr=2 2x" alt="Krunker.io" style="border-radius:7.5px;display:block;height:40px;width: 40px;box-sizing:border-box;" /><span style="color:rgb(0, 46, 114);font-weight:700;box-sizing:border-box;">Krunker.io</span></div>
-                <div style="display:flex;gap:10px;user-select:none;box-sizing:border-box;">
-                    <div data-url="/rate-game/92" style="display:flex;gap:10px;box-sizing:border-box;"><button style="border:0px none rgb(86, 86, 86);color:rgb(86, 86, 86);cursor:pointer;text-align:center;transition:all 0.2s linear 0s;width: 42px;font-family:sans-serif;font-size:15px;line-height:17.25px;margin:0px;overflow:visible;text-transform:none;box-sizing:border-box;"><i style="display:block;font-size:17px;pointer-events:none;line-height:17px;box-sizing:border-box;font-style:normal;font-variant:normal;font-weight:400;text-transform:none;-webkit-font-smoothing:antialiased;font-family:monochrome;"></i><span style="font-family:Montserrat, sans-serif;font-size:11px;pointer-events:none;box-sizing:border-box;">37</span></button><button style="border:0px none rgb(86, 86, 86);color:rgb(86, 86, 86);cursor:pointer;text-align:center;transition:all 0.2s linear 0s;width: 42px;font-family:sans-serif;font-size:15px;line-height:17.25px;margin:0px;overflow:visible;text-transform:none;box-sizing:border-box;"><i style="display:block;font-size:17px;pointer-events:none;line-height:17px;box-sizing:border-box;font-style:normal;font-variant:normal;font-weight:400;text-transform:none;-webkit-font-smoothing:antialiased;font-family:monochrome;"></i><span style="font-family:Montserrat, sans-serif;font-size:11px;pointer-events:none;box-sizing:border-box;">7</span></button></div>
-                    <div style="display:flex;gap:10px;box-sizing:border-box;"><button data-modal=".modal-share" aria-label="Share" style="border:0px none rgb(0, 0, 0);border-radius:50%;cursor:pointer;font-size:18px;height:40px;outline:rgb(0, 0, 0) none 0px;transition:background-color 0.2s ease 0s, transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, -moz-transform 0.1s ease 0s;width: 40px;font-family:sans-serif;line-height:20.7px;margin:0px;overflow:visible;text-transform:none;box-sizing:border-box;"><i style="color:rgb(86, 86, 86);display:block;line-height:0px;pointer-events:none;box-sizing:border-box;font-style:normal;font-variant:normal;font-weight:400;text-transform:none;-webkit-font-smoothing:antialiased;font-family:monochrome;"></i></button><button type="button" aria-label="Switch to full-screen" style="border:0px none rgb(0, 0, 0);border-radius:50%;cursor:pointer;font-size:18px;height:40px;outline:rgb(0, 0, 0) none 0px;transition:background-color 0.2s ease 0s, transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, -moz-transform 0.1s ease 0s;width: 40px;overflow:visible;position:relative;font-family:sans-serif;line-height:20.7px;margin:0px;text-transform:none;box-sizing:border-box;"><i style="color:rgb(86, 86, 86);display:block;line-height:0px;pointer-events:none;box-sizing:border-box;font-style:normal;font-variant:normal;font-weight:400;text-transform:none;-webkit-font-smoothing:antialiased;font-family:monochrome;"></i></button></div>
-                </div>
-                <div style="display: none-webkit-box-pack:center;justify-content:center;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;width: 100%;position:fixed;-webkit-box-align:center;align-items:center;background-color:rgba(255, 255, 255, 0.3);height:100%;left:0px;padding:0px 15px;top:0px;z-index:9999;box-sizing:border-box;">
-                    <div style="backdrop-filter:blur(10px);background-color:rgba(0, 0, 0, 0.6);border-radius:15px;max-width:400px;transform:none;transition:all 0.3s cubic-bezier(0.23, 1, 0.32, 1) 0s;display:flex;-webkit-box-pack:center;justify-content:center;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;width: 100%;box-sizing:border-box;">
-                        <div style="display:flex;-webkit-box-pack:justify;justify-content:space-between;box-sizing:border-box;">
-                            <div style="align-self:center;color:rgb(241, 246, 249);font-size:22.5px;height:min-content;margin-left:15px;box-sizing:border-box;"><i style="line-height:22.5px;box-sizing:border-box;font-style:normal;font-variant:normal;font-weight:400;text-transform:none;-webkit-font-smoothing:antialiased;font-family:monochrome;"></i> Share</div>
-                            <div style="align-self:end;padding:5px;box-sizing:border-box;"><button style="border:1px solid rgba(0, 0, 0, 0);color:rgba(255, 255, 255, 0.8);cursor:pointer;font-size:22.5px;padding:5px;font-family:sans-serif;line-height:25.875px;margin:0px;overflow:visible;text-transform:none;box-sizing:border-box;"><span style="pointer-events:none;box-sizing:border-box;font-style:normal;font-variant:normal;font-weight:400;line-height:22.5px;text-transform:none;-webkit-font-smoothing:antialiased;font-family:monochrome;"></span></button></div>
-                        </div>
-                        <div style="display:flex;height:100%;padding:0px 15px 15px;width: 100%;-webkit-box-align:center;align-items:center;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;-webkit-box-pack:center;color:rgb(255, 255, 255);justify-content:center;text-align:center;box-sizing:border-box;">
-                            <div style="gap:10px;display:flex;box-sizing:border-box;"><a rel="nofollow noopener" target="_blank" href="https://twitter.com/share?url=https%3A%2F%2Fwww.rocketgames.io%2Fgame%2Fkrunker-io&amp;text=Checkout%20this%20game%20I%27m%20playing%20-%20Krunker.io%20%F0%9F%9A%80%F0%9F%94%A5%20%23gaming%20%23browsergame%20%23fun" style="aspect-ratio:1 / 1;background-color:rgb(0, 0, 0);border-radius:50%;box-shadow:rgba(0, 0, 0, 0.24) 0px 6px 12px 0px;display:block;height:42px;overflow:hidden;position:relative;user-select:none;width: 100%;line-height:42px;transition:all 0.2s ease 0s;text-decoration:none solid rgb(255, 255, 255);box-sizing:border-box;border:0px none rgb(255, 255, 255);color:rgb(255, 255, 255);cursor:pointer;font-size:14px;letter-spacing:0.5px;outline:rgb(255, 255, 255) none 0px;padding:0px 10px;text-align:center;text-transform:uppercase;vertical-align:middle;white-space:nowrap;"><i style="font-size:21px;pointer-events:none;line-height:42px;box-sizing:border-box;font-style:normal;font-variant:normal;font-weight:400;text-transform:none;-webkit-font-smoothing:antialiased;font-family:monochrome;"></i></a><a rel="nofollow noopener" target="_blank" href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.rocketgames.io%2Fgame%2Fkrunker-io" style="aspect-ratio:1 / 1;background-color:rgb(59, 89, 152);border-radius:50%;box-shadow:rgba(0, 0, 0, 0.24) 0px 6px 12px 0px;display:block;height:42px;overflow:hidden;position:relative;user-select:none;width: 100%;line-height:42px;transition:all 0.2s ease 0s;text-decoration:none solid rgb(255, 255, 255);box-sizing:border-box;border:0px none rgb(255, 255, 255);color:rgb(255, 255, 255);cursor:pointer;font-size:14px;letter-spacing:0.5px;outline:rgb(255, 255, 255) none 0px;padding:0px 10px;text-align:center;text-transform:uppercase;vertical-align:middle;white-space:nowrap;"><i style="font-size:21px;pointer-events:none;line-height:42px;box-sizing:border-box;font-style:normal;font-variant:normal;font-weight:400;text-transform:none;-webkit-font-smoothing:antialiased;font-family:monochrome;"></i></a><a rel="nofollow noopener" target="_blank" href="https://api.whatsapp.com/send?text=https%3A%2F%2Fwww.rocketgames.io%2Fgame%2Fkrunker-io" style="aspect-ratio:1 / 1;background-color:rgb(37, 211, 102);border-radius:50%;box-shadow:rgba(0, 0, 0, 0.24) 0px 6px 12px 0px;display:block;height:42px;overflow:hidden;position:relative;user-select:none;width: 100%;line-height:42px;transition:all 0.2s ease 0s;text-decoration:none solid rgb(255, 255, 255);box-sizing:border-box;border:0px none rgb(255, 255, 255);color:rgb(255, 255, 255);cursor:pointer;font-size:14px;letter-spacing:0.5px;outline:rgb(255, 255, 255) none 0px;padding:0px 10px;text-align:center;text-transform:uppercase;vertical-align:middle;white-space:nowrap;"><i style="font-size:21px;pointer-events:none;line-height:42px;box-sizing:border-box;font-style:normal;font-variant:normal;font-weight:400;text-transform:none;-webkit-font-smoothing:antialiased;font-family:monochrome;"></i></a><a rel="nofollow noopener" target="_blank" href="https://t.me/share/url?url=https%3A%2F%2Fwww.rocketgames.io%2Fgame%2Fkrunker-io&amp;text=Checkout%20this%20game%20I%27m%20playing%20-%20Krunker.io" style="aspect-ratio:1 / 1;background-color:rgb(0, 136, 204);border-radius:50%;box-shadow:rgba(0, 0, 0, 0.24) 0px 6px 12px 0px;display:block;height:42px;overflow:hidden;position:relative;user-select:none;width: 100%;line-height:42px;transition:all 0.2s ease 0s;text-decoration:none solid rgb(255, 255, 255);box-sizing:border-box;border:0px none rgb(255, 255, 255);color:rgb(255, 255, 255);cursor:pointer;font-size:14px;letter-spacing:0.5px;outline:rgb(255, 255, 255) none 0px;padding:0px 10px;text-align:center;text-transform:uppercase;vertical-align:middle;white-space:nowrap;"><i style="font-size:21px;pointer-events:none;line-height:42px;box-sizing:border-box;font-style:normal;font-variant:normal;font-weight:400;text-transform:none;-webkit-font-smoothing:antialiased;font-family:monochrome;"></i></a><a rel="nofollow noopener" target="_blank"
+        <div class="card" onclick="playSong('Top 50', 'Artist B', 'songs/song2.mp3')">
+          <img src="https://via.placeholder.com/150" alt="Top 50">
+          <h4>Top 50</h4>
+        </div>
+        <div class="card" onclick="playSong('Lo-fi Beats', 'Artist C', 'songs/song3.mp3')">
+          <img src="https://via.placeholder.com/150" alt="Lo-fi Beats">
+          <h4>Lo-fi Beats</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="player">
+    <span id="nowPlaying">Now Playing: None</span>
+    <div class="controls">
+      <button onclick="togglePlay()">▶️ / ⏸</button>
+      <audio id="audioPlayer" src=""></audio>
+    </div>
+  </div>
+
+  <script>
+    const audioPlayer = document.getElementById('audioPlayer');
+    const nowPlaying = document.getElementById('nowPlaying');
+    let isPlaying = false;
+
+    function playSong(title, artist, src) {
+      audioPlayer.src = src;
+      nowPlaying.textContent = `Now Playing: ${title} - ${artist}`;
+      audioPlayer.play();
+      isPlaying = true;
+    }
+
+    function togglePlay() {
+      if (isPlaying) {
+        audioPlayer.pause();
+      } else {
+        audioPlayer.play();
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
+</body>
+</html>
